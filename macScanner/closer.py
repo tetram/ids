@@ -7,8 +7,9 @@ def closer(liste):
 	c = []
 	m = -99
 	for l in liste:
-		pwr = float(l[4])
-		if (pwr >= m) & (pwr != -1) :
+		pwr = float(l[3])
+		# TODO : faire plus générique !! pwr depend du drivers wifi
+		if (pwr >= m) & (pwr < -1) :
 			c = l
 			m = pwr
 	return c
