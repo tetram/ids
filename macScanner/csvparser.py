@@ -2,7 +2,6 @@
 # Pour parser le fichier de sortie d'airodump
 
 import csv
-import os
 
 ##########################################################
 #
