@@ -8,14 +8,14 @@
 if [ $# = 1 ]
  then
 	# Passer l'interface en mode monitoring
-	airomong-ng start $1
+	airmon-ng start $1
 	
 	# Effacer le fichier out si existant
 	rm -rf caprure*
 
 	# Ecriture de la sortie dans le fichier capture
-	terminal airodump-ng -w capture mon0 &
-
+	gnome-terminal -e 'airodump-ng -w capture mon0' &
+	sleep 10
 	# Boucle de parsage/sortie plus proche
 	#TODO boucle
 	python closer.py
