@@ -20,8 +20,9 @@ def parse(file):
 		if len(row) != 0:
 			if tag:
 				rows.append(row)
-			if "Station MAC" in row:
-				tag = 1
+			else:
+				if "Station MAC" in row:
+					tag = 1
 	return rows
 		
 # test de la fonction parse

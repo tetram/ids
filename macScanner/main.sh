@@ -5,6 +5,14 @@
 #
 ########################################
 
+bashtrap()
+{
+	echo "CTRL+C Detected !...executing bash trap !"
+	# fin
+	# TODO stopper airodump
+	airmon-ng stop mon0
+}
+
 if [ $# = 1 ]
  then
 	# Passer l'interface en mode monitoring
@@ -18,12 +26,11 @@ if [ $# = 1 ]
 	sleep 10
 	# Boucle de parsage/sortie plus proche
 	#TODO boucle
-	python closer.py
-	sleep 10
-
-	# fin
-	# TODO stopper airodump
-	airmon-ng stop mon0
+	while [1]; do
+		python closer.py
+		sleep 2
+	done
+	
  else
 	echo "Syntaxe : $0 interface"
 fi 
