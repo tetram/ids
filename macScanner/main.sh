@@ -1,7 +1,7 @@
 ########################################
 #
 # Permet de lancer le monitoring des wifi
-# envirronnement actifs
+# actifs
 #
 ########################################
 
@@ -14,7 +14,7 @@ if [ $# = 1 ]
 	rm -rf caprure*
 
 	# Ecriture de la sortie dans le fichier capture
-	airodump-ng -w capture mon0 &
+	terminal airodump-ng -w capture mon0 &
 
 	# Boucle de parsage/sortie plus proche
 	#TODO boucle
