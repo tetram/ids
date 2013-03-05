@@ -4,7 +4,7 @@
 # actifs
 #
 ########################################
-
+trap bashtrap INT
 bashtrap()
 {
 	echo "CTRL+C Detected !...executing bash trap !"
@@ -19,7 +19,7 @@ if [ $# = 1 ]
 	airmon-ng start $1
 	
 	# Effacer le fichier out si existant
-	rm -rf caprure*
+	rm -rf capture*
 
 	# Ecriture de la sortie dans le fichier capture
 	gnome-terminal -e 'airodump-ng -w capture mon0' &
