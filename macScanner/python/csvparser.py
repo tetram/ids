@@ -3,6 +3,7 @@
 
 import csv
 import datetime
+import getopt, sys
 
 ##########################################################
 #
@@ -56,6 +57,16 @@ def printRows(rows):
 	for row in rows:
 		print(row)
 
+def main():
+	# parse command line options
+	try:
+		opts, args = getopt.getopt(sys.argv[1:], "h", ["help"])
+	except getopt.GetoptError as err:
+		print(str(err))
+		sys.exit(2)
+	fichier = args[0]
+	sec = args[1]
+	printRows(parseM(fichier,float(sec)))	
+
 if __name__ == "__main__":
-    #print(parse("test-01.csv"))
-	printRows(parseM("test-01.csv",3600))
+    main()

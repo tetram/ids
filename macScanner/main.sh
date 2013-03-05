@@ -26,8 +26,8 @@ if [ $# = 1 ]
 	sleep 10
 	# Boucle de parsage/sortie plus proche
 	#TODO boucle
-	while [1]; do
-		python closer.py
+	while true; do
+		python ./python/csvparser.py capture-01.csv 3600
 		sleep 2
 	done
 	
