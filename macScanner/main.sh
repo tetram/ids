@@ -4,14 +4,9 @@
 # actifs
 #
 ########################################
+
+# Definition de la focntion appelee après un CTRL+C
 trap bashtrap INT
-bashtrap()
-{
-	echo "CTRL+C Detected !...executing bash trap !"
-	# fin
-	# TODO stopper airodump
-	airmon-ng stop mon0
-}
 
 if [ $# = 1 ]
  then
@@ -34,6 +29,14 @@ if [ $# = 1 ]
  else
 	echo "Syntaxe : $0 interface"
 fi 
+
+bashtrap()
+{
+	echo "CTRL+C Detected !...executing bash trap !"
+	# fin
+	# TODO stopper airodump
+	airmon-ng stop mon0
+}
 
 
 
