@@ -20,7 +20,7 @@ if [ $# = 1 ]
 	gnome-terminal -e 'airodump-ng -w capture mon0' &
 	sleep 10
 	# Execution
-	sh boucle.sh #| java -jar #TODO
+	sh boucle.sh | java -jar SinfageMac.jar
 	
  else
 	echo "Syntaxe : $0 interface"
@@ -30,8 +30,10 @@ bashtrap()
 {
 	echo "CTRL+C Detected !...executing bash trap !"
 	# fin
-	# TODO stopper airodump
+	# TODO stopper airodump et le java ?
 	airmon-ng stop mon0
+
+	rm -rf capture*
 }
 
 
