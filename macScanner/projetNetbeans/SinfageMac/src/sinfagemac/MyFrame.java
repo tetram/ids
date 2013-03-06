@@ -17,6 +17,7 @@ public class MyFrame extends javax.swing.JFrame {
      * Creates new form MyFrame
      */
     public MyFrame() {
+        setUndecorated(true);
         initComponents();
         Dimension dim = (Toolkit.getDefaultToolkit()).getScreenSize(); 
         dim.setSize(dim.getWidth(), (dim.getHeight()/2));
