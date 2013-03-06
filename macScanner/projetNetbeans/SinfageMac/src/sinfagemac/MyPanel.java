@@ -38,7 +38,7 @@ public class MyPanel extends JPanel{
         for(Client c : newListe){
             if(mesClients.containsKey(c.getId())){
                 Client c2 = mesClients.get(c.getId());
-                c2.setTaille(c.getTaille());
+                c2.setTaille(c.taille);
                 prov.put(c.getId(), c2);
             }
         }

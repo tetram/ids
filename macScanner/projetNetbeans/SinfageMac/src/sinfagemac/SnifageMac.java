@@ -26,18 +26,19 @@ public class SnifageMac implements Runnable{
 
     @Override
     public void run() {
-                Lecture l = new Lecture(this);
-                l.start();
+
                 mf = new MyFrame();
                 mf.setVisible(true);
-                
+                               
+                Lecture l = new Lecture(this);
+                l.start();
                 //Test ^^
 //                HashSet<Client> listeClientTest = new HashSet<>();
 //                for(int i=1;i<=5;i++){
 //                    listeClientTest.add(new Client("TOTO "+i, 20*i));
 //                    mf.getMyPanel().gererListClient(listeClientTest);
 //                }
-                HashSet<Client> listeClientTest = new HashSet<>();
+
 
                 
     }

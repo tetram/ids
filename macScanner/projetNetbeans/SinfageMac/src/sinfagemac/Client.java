@@ -16,10 +16,9 @@ public class Client {
     
     private String id;
     private String affichage;
-    private int taille;
+    public int taille;
     private int x;
     private int y;
-    private Color[] couleurs = {Color.WHITE,Color.BLUE,Color.GREEN,Color.YELLOW,Color.RED};
     public Client(String id,String affichage,int taille){
         this.id=id;
         this.affichage=affichage;
@@ -56,7 +55,10 @@ public class Client {
     }
 
     public int getTaille() {
-        return taille;
+        if(taille==0)
+            return 50;
+        else
+            return taille;
     }
 
     public void setTaille(int taille) {
@@ -84,28 +86,33 @@ public class Client {
     }
     
     public Color getColor(){
-        return couleurs[(int)getTaille()/((tailleMax+20)/5)];
+        if(taille==0)
+            return Color.red;
+        else
+            return Color.BLUE;
     }
+    
+    
     public void drawMe(Graphics g){
         int tailleLettre = 9;
         int nbLettre = this.affichage.length();
         int retraitX = (nbLettre*tailleLettre)/2;
         Color prov = g.getColor();
-        g.setColor(getColor());
-        g.fillOval(x, y, taille, taille);
+        g.setColor(this.getColor());
+        g.fillOval(x, y, getTaille(), getTaille());
         g.setColor(Color.black);
-        g.drawOval(x, y, taille, taille);
-        g.drawString(this.affichage, (x-retraitX)+(taille/2), (y+(tailleLettre/2))+(taille/2));
+        g.drawOval(x, y, getTaille(), getTaille());
+        g.drawString(this.affichage, (x-retraitX)+(getTaille()/2), (y+(tailleLettre/2))+(getTaille()/2));
         g.setColor(prov);
     }
     
     public boolean seTouche(Client c){
-        if(((this.x<=c.getX() && (this.x+this.taille)>=c.getX()) || 
-            (this.x<=(c.getX()+c.getTaille()) && (this.x+this.taille)>=(c.getX()+c.getTaille())) ||
-            (this.x>=c.getX() && (this.x+this.taille)<=(c.getX()+c.getTaille()))) &&  
-           ((this.y<=c.getY() && (this.y+this.taille)>=c.getY()) || 
-            (this.y<=(c.getY()+c.getTaille()) && (this.y+this.taille)>=(c.getY()+c.getTaille())) ||
-            (this.y>=c.getY() && (this.y+this.taille)<=(c.getY()+c.getTaille())))){
+        if(((this.x<=c.getX() && (this.x+this.getTaille())>=c.getX()) || 
+            (this.x<=(c.getX()+c.getTaille()) && (this.x+this.getTaille())>=(c.getX()+c.getTaille())) ||
+            (this.x>=c.getX() && (this.x+this.getTaille())<=(c.getX()+c.getTaille()))) &&  
+           ((this.y<=c.getY() && (this.y+this.getTaille())>=c.getY()) || 
+            (this.y<=(c.getY()+c.getTaille()) && (this.y+this.getTaille())>=(c.getY()+c.getTaille())) ||
+            (this.y>=c.getY() && (this.y+this.getTaille())<=(c.getY()+c.getTaille())))){
             return true;
         }else{
             return false;
