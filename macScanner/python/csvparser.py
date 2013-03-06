@@ -52,10 +52,20 @@ def parseM(file,s):
 				if "Station MAC" in row:
 					tag = 1
 	return rows
-	
+
+##########################################################
+#
+# Print les lignes sous la forme 
+# 	@MAC;power avec power ramené entre 0 et 100
+##########################################################	
 def printMacPower(rows):
 	for row in rows:
-		print(row[0]+';'+row[3])
+		pwr = int(row[3])
+		if (pwr >= -1):
+			pwr = 0
+		else:
+			pwr = 100 + pwr
+		print(row[0]+';'+str(pwr))
 
 def main():
 	# parse command line options
