@@ -19,12 +19,8 @@ if [ $# = 1 ]
 	# Ecriture de la sortie dans le fichier capture
 	gnome-terminal -e 'airodump-ng -w capture mon0' &
 	sleep 10
-	# Boucle de parsage/sortie plus proche
-	#TODO boucle
-	while true; do
-		python ./python/csvparser.py capture-01.csv 3600
-		sleep 2
-	done
+	# Execution
+	sh boucle.sh #| java -jar #TODO
 	
  else
 	echo "Syntaxe : $0 interface"

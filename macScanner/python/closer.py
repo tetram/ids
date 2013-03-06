@@ -15,4 +15,4 @@ def closer(liste):
 	return c
 	
 if __name__ == "__main__":
-    print(closer(parse("capture-01.csv")))
+    print(closer(parse("test-01.csv")))

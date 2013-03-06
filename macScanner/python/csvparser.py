@@ -53,9 +53,9 @@ def parseM(file,s):
 					tag = 1
 	return rows
 	
-def printRows(rows):
+def printMacPower(rows):
 	for row in rows:
-		print(row)
+		print(row[0]+';'+row[3])
 
 def main():
 	# parse command line options
@@ -66,7 +66,7 @@ def main():
 		sys.exit(2)
 	fichier = args[0]
 	sec = args[1]
-	printRows(parseM(fichier,float(sec)))	
+	printMacPower(parseM(fichier,float(sec)))	
 
 if __name__ == "__main__":
     main()
