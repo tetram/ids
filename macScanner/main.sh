@@ -7,7 +7,11 @@
 
 # Definition de la focntion appelee après un CTRL+C
 trap bashtrap INT
-
+if [[ $EUID -ne 0 ]]
+ then
+	echo "Please run the script as root !"
+	exit 1
+fi
 if [ $# = 1 ]
  then
 	# Passer l'interface en mode monitoring

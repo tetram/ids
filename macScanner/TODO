@@ -1,0 +1,7 @@
+Flo : 
+Catcher
+Exception in thread "Thread-0" java.util.NoSuchElementException: No line found
+	at java.util.Scanner.nextLine(Scanner.java:1585)
+	at sinfagemac.Lecture.run(Lecture.java:28)
+
+Pour que ça stop ton programme proprement :)
