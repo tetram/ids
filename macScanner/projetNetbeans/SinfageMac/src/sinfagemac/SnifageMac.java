@@ -13,6 +13,7 @@ import java.util.HashSet;
 public class SnifageMac implements Runnable{
 
     public MyFrame mf;
+    private Lecture l;
     /**
      * @param args the command line arguments
      */
@@ -30,7 +31,7 @@ public class SnifageMac implements Runnable{
                 mf = new MyFrame();
                 mf.setVisible(true);
                                
-                Lecture l = new Lecture(this);
+                l = new Lecture(this);
                 l.start();
                 //Test ^^
 //                HashSet<Client> listeClientTest = new HashSet<>();
@@ -46,6 +47,10 @@ public class SnifageMac implements Runnable{
     public void newListe(HashSet<Client> listeClientTest) {
         if(listeClientTest!=null)
             mf.getMyPanel().gererListClient(listeClientTest);
+    }
+
+    public void stop() {
+        mf.setVisible(false);
     }
 
 }
