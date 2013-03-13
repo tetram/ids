@@ -54,6 +54,8 @@ import org.OpenNI.Point3D;
 import org.OpenNI.StatusException;
 import org.OpenNI.Samples.SimpleViewer.SimpleViewerApplication;
 
+import Outils.LireMusique;
+
 import com.primesense.NITE.CircleDetector;
 import com.primesense.NITE.DirectionVelocityAngleEventArgs;
 import com.primesense.NITE.HandEventArgs;
@@ -277,6 +279,10 @@ public class GestureDetect
           Point3D focusPt = args.getPoint();
           System.out.printf("Session started at (%.0f, %.0f, %.0f)\n", 
                                         focusPt.getX(), focusPt.getY(), focusPt.getZ());
+			//on met un son de pas dans un nouveau thread
+			new Thread(new Runnable() {
+			      public void run() {new LireMusique("sons\\appareilPhoto.wav");} }
+			).start();	
         }
       });
       
@@ -337,6 +343,10 @@ public class GestureDetect
         { 
           int id = args.getId();
           System.out.printf("Point %d destroyed:\n", id);
+			//on met un son de pas dans un nouveau thread
+			new Thread(new Runnable() {
+			      public void run() {new LireMusique("sons\\miroir.wav");} }
+			).start();
           if (pi.getID() == id)
             pi = null; 
         }
