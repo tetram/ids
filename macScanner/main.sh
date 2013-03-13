@@ -5,6 +5,16 @@
 #
 ########################################
 
+bashtrap()
+{
+	echo "CTRL+C Detected !...executing bash trap !"
+	# fin
+	# TODO stopper airodump et le java ?
+	airmon-ng stop mon0
+
+	rm -rf capture*
+}
+
 # Definition de la focntion appelee après un CTRL+C
 trap bashtrap INT
 if [[ $EUID -ne 0 ]]
@@ -30,15 +40,6 @@ if [ $# = 1 ]
 	echo "Syntaxe : $0 interface"
 fi 
 
-bashtrap()
-{
-	echo "CTRL+C Detected !...executing bash trap !"
-	# fin
-	# TODO stopper airodump et le java ?
-	airmon-ng stop mon0
-
-	rm -rf capture*
-}
 
 
 

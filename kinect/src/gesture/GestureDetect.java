@@ -89,6 +89,12 @@ public class GestureDetect
 
   public GestureDetect()
   {
+//	    JFrame jf = new JFrame();
+//	    jf.setSize(500, 500);
+//	    jf.setVisible(true);
+//	    new SimpleViewerApplication(new JFrame());
+//	    new Sim
+	    
 	  try {
 		rob = new Robot();
 	} catch (AWTException e1) {
@@ -113,7 +119,7 @@ public class GestureDetect
       e.printStackTrace();
     }
     
-    new SimpleViewerApplication(new JFrame());
+
     
   }  // end of GestureDetect()
 

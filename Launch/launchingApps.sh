@@ -21,7 +21,7 @@ sleep 1
 python2.7 switch_desktop down
 
 # Start macScanner
-sh ../macScanner/main.sh &
+sh ../macScanner/main.sh wlan1 &
 
 # Go back on 1st desktop
 sleep 5
