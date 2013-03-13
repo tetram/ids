@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="lib/com.primesense.NITE.jar"/>
+	<classpathentry kind="lib" path="lib/org.OpenNI.jar"/>
+	<classpathentry kind="lib" path="lib/org.OpenNI.Samples.SimpleRead.jar"/>
+	<classpathentry kind="lib" path="lib/org.OpenNI.Samples.SimpleViewer.jar"/>
+	<classpathentry kind="lib" path="lib/org.OpenNI.Samples.UserTracker.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
