@@ -6,8 +6,9 @@ package gesture;
 /*  Store hand point information obtained from a NITE PointControl.
 */
 
-import org.OpenNI.*;
-import com.primesense.NITE.*;
+import org.OpenNI.Point3D;
+
+import com.primesense.NITE.HandPointContext;
 
 
 public class PositionInfo

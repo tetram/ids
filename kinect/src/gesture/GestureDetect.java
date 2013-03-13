@@ -34,13 +34,42 @@ package gesture;
 */
 
 
-import java.awt.*;
-import java.awt.event.*;
-import java.util.*;
+import java.awt.AWTException;
 import java.awt.Robot;
+import java.awt.event.KeyEvent;
 
-import org.OpenNI.*;
-import com.primesense.NITE.*;
+import javax.swing.JFrame;
+
+import org.OpenNI.ActiveHandEventArgs;
+import org.OpenNI.Context;
+import org.OpenNI.GeneralException;
+import org.OpenNI.GestureGenerator;
+import org.OpenNI.GestureRecognizedEventArgs;
+import org.OpenNI.HandsGenerator;
+import org.OpenNI.IObservable;
+import org.OpenNI.IObserver;
+import org.OpenNI.InactiveHandEventArgs;
+import org.OpenNI.License;
+import org.OpenNI.Point3D;
+import org.OpenNI.StatusException;
+import org.OpenNI.Samples.SimpleViewer.SimpleViewerApplication;
+
+import com.primesense.NITE.CircleDetector;
+import com.primesense.NITE.DirectionVelocityAngleEventArgs;
+import com.primesense.NITE.HandEventArgs;
+import com.primesense.NITE.HandPointContext;
+import com.primesense.NITE.IdEventArgs;
+import com.primesense.NITE.IdValueEventArgs;
+import com.primesense.NITE.NullEventArgs;
+import com.primesense.NITE.PointControl;
+import com.primesense.NITE.PointEventArgs;
+import com.primesense.NITE.PushDetector;
+import com.primesense.NITE.SessionManager;
+import com.primesense.NITE.SteadyDetector;
+import com.primesense.NITE.StringPointValueEventArgs;
+import com.primesense.NITE.SwipeDetector;
+import com.primesense.NITE.VelocityAngleEventArgs;
+import com.primesense.NITE.WaveDetector;
 
 
 
@@ -64,6 +93,8 @@ public class GestureDetect
 		// TODO Auto-generated catch block
 		e1.printStackTrace();
 	}
+	  
+	  
     try {
       configOpenNI();
       configNITE();
@@ -79,6 +110,9 @@ public class GestureDetect
     catch (GeneralException e) {
       e.printStackTrace();
     }
+    
+    new SimpleViewerApplication(new JFrame());
+    
   }  // end of GestureDetect()
 
 
@@ -575,8 +609,8 @@ public class GestureDetect
 
 
   // ----------------------------------
-
-  public static void main(String args[])
-  {  new GestureDetect();  }
+//
+//  public static void main(String args[])
+//  {  new GestureDetect();  }
 
 }  // end of GestureDetect class
