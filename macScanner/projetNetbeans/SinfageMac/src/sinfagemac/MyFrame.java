@@ -22,7 +22,6 @@ public class MyFrame extends javax.swing.JFrame {
         Dimension dim = (Toolkit.getDefaultToolkit()).getScreenSize(); 
         dim.setSize(dim.getWidth(), (dim.getHeight()));
         setSize(dim);  
-        setLocation(0,(int)(dim.getHeight()));
         setAlwaysOnTop(true);
     }
 
