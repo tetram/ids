@@ -287,7 +287,7 @@ public class GestureDetect
                                         focusPt.getX(), focusPt.getY(), focusPt.getZ());
 			//on met un son de pas dans un nouveau thread
 			new Thread(new Runnable() {
-			      public void run() {new LireMusique("/home/user/Documents/ids/kinect/sons/appareilPhoto.wav");} }
+			      public void run() {new LireMusique("/home/user/Documents/ids/kinect/sons/CATCH.wav");} }
 			).start();	
         }
       });
@@ -350,9 +350,9 @@ public class GestureDetect
           int id = args.getId();
           System.out.printf("Point %d destroyed:\n", id);
 			//on met un son de pas dans un nouveau thread
-//			new Thread(new Runnable() {
-//			      public void run() {new LireMusique("sons/miroir.wav");} }
-//			).start();
+			new Thread(new Runnable() {
+			      public void run() {new LireMusique("/home/user/Documents/ids/kinect/sons/DESTROY.wav");} }
+			).start();
           if (pi.getID() == id)
             pi = null; 
         }
