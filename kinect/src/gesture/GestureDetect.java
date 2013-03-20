@@ -163,6 +163,7 @@ public class GestureDetect
     try {
       sessionMan = new SessionManager(context,"RaiseHand");   // NITE
                                     // main focus gesture(s), quick refocus gesture(s)  
+      sessionMan.setPrimaryStaticTimeout(2);
       setSessionEvents(sessionMan);
 
       // create point, wave, push, swipe, circle, steady NITE detectors;
@@ -329,10 +330,10 @@ public class GestureDetect
       pointCtrl.getPointCreateEvent().addObserver( new IObserver<HandEventArgs>() {
         public void update(IObservable<HandEventArgs> observable, HandEventArgs args)
         { 
-        	if (args.getHand().getPosition().getZ()<800){
+        	//if (args.getHand().getPosition().getZ()<800){
 	          pi = new PositionInfo( args.getHand() );
 	          System.out.println(pi);
-        	}
+        	//}
         }
       });
 
