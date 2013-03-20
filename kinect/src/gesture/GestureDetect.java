@@ -38,10 +38,12 @@ import java.awt.AWTException;
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
 
+import javax.media.j3d.DepthComponentInt;
 import javax.swing.JFrame;
 
 import org.OpenNI.ActiveHandEventArgs;
 import org.OpenNI.Context;
+import org.OpenNI.DepthGenerator;
 import org.OpenNI.GeneralException;
 import org.OpenNI.GestureGenerator;
 import org.OpenNI.GestureRecognizedEventArgs;
@@ -50,7 +52,9 @@ import org.OpenNI.IObservable;
 import org.OpenNI.IObserver;
 import org.OpenNI.InactiveHandEventArgs;
 import org.OpenNI.License;
+import org.OpenNI.MapOutputMode;
 import org.OpenNI.Point3D;
+import org.OpenNI.ProductionNodeDescription;
 import org.OpenNI.StatusException;
 import org.OpenNI.Samples.SimpleViewer.SimpleViewerApplication;
 
@@ -85,15 +89,14 @@ public class GestureDetect
   private PositionInfo pi = null;  // for storing current hand point info
   
   public static Robot rob = null;
+  
+  public static boolean changementBureau = false;
 
 
-  public GestureDetect()
+  public GestureDetect(boolean changementBureau)
   {
-//	    JFrame jf = new JFrame();
-//	    jf.setSize(500, 500);
-//	    jf.setVisible(true);
-//	    new SimpleViewerApplication(new JFrame());
-//	    new Sim
+	  
+	  GestureDetect.changementBureau = changementBureau;
 	    
 	  try {
 		rob = new Robot();
@@ -264,12 +267,14 @@ public class GestureDetect
   // create session callbacks
   {
     try {
+    	
       // when a focus gesture has started to be recognized 
       sessionMan.getSessionFocusProgressEvent().addObserver( 
                           new IObserver<StringPointValueEventArgs>() {
         public void update(IObservable<StringPointValueEventArgs> observable, 
                            StringPointValueEventArgs args)
         { 
+          
           Point3D focusPt = args.getPoint();
           float progress = args.getValue();
           String focusName = args.getName();
@@ -324,8 +329,10 @@ public class GestureDetect
       pointCtrl.getPointCreateEvent().addObserver( new IObserver<HandEventArgs>() {
         public void update(IObservable<HandEventArgs> observable, HandEventArgs args)
         { 
-          pi = new PositionInfo( args.getHand() );
-          System.out.println(pi);
+        	if (args.getHand().getPosition().getZ()<800){
+	          pi = new PositionInfo( args.getHand() );
+	          System.out.println(pi);
+        	}
         }
       });
 
@@ -473,13 +480,9 @@ public class GestureDetect
 
         	  Robot r = GestureDetect.rob;
 				if (GestureDetect.rob !=null){      	  
-			//r.keyPress(KeyEvent.VK_CONTROL);
-			//r.keyPress(KeyEvent.VK_ALT);
-			r.keyPress(KeyEvent.VK_RIGHT);
-			r.keyRelease(KeyEvent.VK_RIGHT);
-			//r.keyRelease(KeyEvent.VK_CONTROL);
-			//r.keyRelease(KeyEvent.VK_ALT);
-			r = null;
+					r.keyPress(KeyEvent.VK_RIGHT);
+					r.keyRelease(KeyEvent.VK_RIGHT);
+					r = null;
 				}
 
         }
@@ -495,18 +498,15 @@ public class GestureDetect
 											args.getVelocity(), args.getAngle());
 							if (GestureDetect.rob !=null){
 								Robot r = GestureDetect.rob;
-								//r.keyPress(KeyEvent.VK_CONTROL);
-								//r.keyPress(KeyEvent.VK_ALT);
 								r.keyPress(KeyEvent.VK_LEFT);
 								r.keyRelease(KeyEvent.VK_LEFT);
-								//r.keyRelease(KeyEvent.VK_CONTROL);
-								//r.keyRelease(KeyEvent.VK_ALT);
 								r = null;
 							}
 
 						}
 					});
-		      
+			
+		      if (GestureDetect.changementBureau) {
 					swipeDetector.getSwipeDownEvent().addObserver(
 							new IObserver<VelocityAngleEventArgs>() {
 								public void update(
@@ -550,6 +550,8 @@ public class GestureDetect
 
 								}
 							});
+		      }
+		      //fin chamgement de bureau
     }
     catch (GeneralException e) {
       e.printStackTrace();
