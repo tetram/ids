@@ -11,8 +11,8 @@ python2.7 switch_desktop.py left
 # Start macScanner on 2nd desktop
 cd ../macScanner/
 echo 'Launching macScanner...'
-sudo sh main.sh wlan1 &
-sleep 15
+sudo sh main3.sh wlan1 &
+sleep 25
 
 # Go on 2nd desktop
 cd ../Launch/
@@ -25,7 +25,7 @@ sleep 1
 
 # StartKiCtrl on 1st desktop
 echo 'Launching kinect controler...'
-java -jar ../kinect/kinect.jar &
+java -jar ../kinect/kinect.jar -b &
 sleep 1
 
 # Start pdfViewer on 1st desktop
